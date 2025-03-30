@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            color: red;
+        }
+
+        .color {
+            color: blue;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            margin: 100 auto;
+            padding: 20px;
+            border: 1px solid #521224;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div">这是一个字</div>
+    <div id="div2">这是五个字</div>
+    <script>
+        'use strict';
+        //通过类名修改样式
+        const div = document.querySelector('#div');
+        const div2 = document.querySelector('#div2');
+        div.className = 'box';
+        //className可以添加多个css属性,例如
+        div2.className = 'box nav';
+        //但是会产生一个问题,className容易覆盖以前的类名,
+
+
+        // 于是乎有了classList可以追加和删除
+        //元素.classList.remove('类名');删除一个类
+        //元素.classList.toggle('类名');切换一个类  有就删掉,没有就加上
+        //元素.classList.add('类名');增加一个类
+        div2.classList.add('color');
+    </script>
+</body>
+
+</html>
