@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -290,6 +291,7 @@ public class api {
         c.add(Calendar.MONTH, -1);
         c.add(Calendar.YEAR, 1);
         System.out.println(c.get(2));
+
         sc.close();
 
         // jdk8新增时间类,更方便,更安全
@@ -319,6 +321,29 @@ public class api {
         Instant instant3 = Instant.ofEpochSecond(1, 1000000000);
         System.out.println(instant3);// 一秒加1e9纳秒
 
+        // 3.atZone 指定时区
+        ZonedDateTime time3 = Instant.now().atZone(ZoneId.of("Asia/Shanghai"));
+        System.out.println(time3);
+
+        // 4.isXxx 判断系列方法
+        Instant instant6 = Instant.ofEpochSecond(23l);
+        Instant instant7 = Instant.ofEpochSecond(64l);
+        boolean res = instant6.isBefore(instant7);
+        System.out.println(res);
+
+        // 5.minXxxx 减少时间系列方法
+        Instant instant8 = Instant.ofEpochSecond(23323234l);
+        System.out.println(instant8);
+        Instant instant9 = instant8.minusSeconds(432l);
+        System.out.println(instant9);
+
+        // 6.plusXxxx 增加时间系列方法
+        // ……………………
+
+        // ZoneDateTime 好多方法和之前差不多
+        // 1.获取当前时间对象
+        ZonedDateTime now = ZonedDateTime.now();
+        System.out.println(now);
     }
 
 }

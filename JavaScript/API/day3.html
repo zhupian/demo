@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style></style>
+  </head>
 
-    </style>
-</head>
-
-<body>
+  <body>
+    <input type="text" value="电脑" id="inp1" checked />
+    <input type="checkbox" id="inp2" />
+    <button disabled>点击</button>
+    <div data-id="1" data-sam="不知道">1</div>
+    <div data-id="2">2</div>
+    <div data-id="3">3</div>
+    <div data-id="4">4</div>
+    <div data-id="5">5</div>
     <script>
+      //获取表单的值
+      const username = document.querySelector("input");
+      console.log(username.value);
+      username.type = "password";
 
+      const inp2 = document.querySelector("#inp2");
+      inp2.checked = true; // 'dsd'也会勾上 因为字符串会转true
+
+      const button = document.querySelector("button");
+      button.disabled = false; //false可以点击
+
+      //自定义属性  id type 啥的叫属性  顾名思义可以自定义元素的属性
+      //格式 data-……
+      const one = document.querySelector("div");
+      console.log(one.dataset); //dataset 集合
+      console.log(one.dataset.id); //获取自定义属性
+      console.log(one.dataset.sam);
+
+      //定时器-间歇函数 setInterval(函数,间隔时间)
+      //   let i = 1;
+      //   setInterval(function () {
+      //     console.log(++i);
+      //   }, 1000);
+
+      function fn() {
+        console.log("sfsd");
+      }
+      //   setInterval(fn, 1000);  函数不用加小括号
+      //防止定时器相互干扰 每个定时器都有独一无二的序号,
+      let n = setInterval(fn, 1000);
+      console.log(n);
+      clearInterval(n); // 关闭定时器
     </script>
-</body>
-
+  </body>
 </html>
