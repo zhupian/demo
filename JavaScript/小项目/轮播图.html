@@ -1,112 +1,125 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        .slider-out {
-            width: auto;
-            height: 600px;
-            background-color: antiquewhite;
-        }
+      .slider-out {
+        width: auto;
+        height: 600px;
+        background-color: antiquewhite;
+      }
 
-        .slider-inner {
-            width: auto;
-            height: 100px;
-            background-color: aliceblue;
-        }
+      .slider-inner {
+        width: auto;
+        height: 100px;
+        background-color: aliceblue;
+      }
 
-        .active {
-            background: #2196F3 !important;
-            transform: scale(1.2);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+      .active {
+        background: #2196f3 !important;
+        transform: scale(1.2);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
 
-        ul {
-            list-style: none;
-            /* 去除默认圆点 */
-            padding-left: 0;
-            /* 清除默认缩进 */
-            display: flex;
-            /* 启用弹性布局 */
-            gap: 15px;
-            /* 列表项间距 */
-            justify-content: center;
-            /* 水平居中 */
-        }
+      ul {
+        list-style: none;
+        /* 去除默认圆点 */
+        padding-left: 0;
+        /* 清除默认缩进 */
+        display: flex;
+        /* 启用弹性布局 */
+        gap: 15px;
+        /* 列表项间距 */
+        justify-content: center;
+        /* 水平居中 */
+      }
 
-        ul li {
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+      ul li {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-        ul li:hover {
-            background: #4CAF50;
-            /* 悬停背景色 */
-            color: white;
-        }
+      ul li:hover {
+        background: #4caf50;
+        /* 悬停背景色 */
+        color: white;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="slider">
-        <div class="slider-out">
-            <img>
-        </div>
-        <div class="slider-inner">
-            <p></p>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </div>
+      <div class="slider-out">
+        <img />
+      </div>
+      <div class="slider-inner">
+        <p></p>
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </div>
     </div>
-
+    <button>停止</button>
     <script>
-        'use strict';
-        const arr = ['https://haowallpaper.com/link/common/file/previewFileImg/15789130517090624',
-            'https://haowallpaper.com/link/common/file/previewFileImg/16445126326406528',
-            'https://haowallpaper.com/link/common/file/previewFileImg/16563395263319424',
-            'https://haowallpaper.com/link/common/file/previewFileImg/16535093223607680',
-            'https://haowallpaper.com/link/common/file/previewFileImg/15662353409020224',
-            'https://haowallpaper.com/link/common/file/previewFileImg/16625960047725952',
-        ]
-        const brr = ['1', '2', '3', '4', '5', '6'];
-        const slider = document.querySelector('.slider');
-        const sliderOut = document.querySelector('.slider-out');
-        const sliderInner = document.querySelector('.slider-inner');
-        const img = document.querySelector('img');
-        const p = document.querySelector('p');
-        const r = Math.floor(Math.random() * 6);
-        img.src = arr[r];
-        p.innerHTML = `${brr[r]}`;
-        // 修改后的JS部分（保持原有随机逻辑）
-        const lis = document.querySelectorAll('li');
-        lis[r].classList.add('active'); // 高亮激活项
+      "use strict";
+      const arr = [
+        "https://haowallpaper.com/link/common/file/previewFileImg/15789130517090624",
+        "https://haowallpaper.com/link/common/file/previewFileImg/16445126326406528",
+        "https://haowallpaper.com/link/common/file/previewFileImg/16563395263319424",
+        "https://haowallpaper.com/link/common/file/previewFileImg/16535093223607680",
+        "https://haowallpaper.com/link/common/file/previewFileImg/15662353409020224",
+        "https://haowallpaper.com/link/common/file/previewFileImg/16625960047725952",
+      ];
+      const brr = ["1", "2", "3", "4", "5", "6"];
+      const slider = document.querySelector(".slider");
+      const sliderOut = document.querySelector(".slider-out");
+      const sliderInner = document.querySelector(".slider-inner");
+      const img = document.querySelector("img");
+      const p = document.querySelector("p");
+      const r = Math.floor(Math.random() * 6);
+      const but = document.querySelector("button");
+      img.src = arr[r];
 
-        // 添加点击切换功能
-        lis.forEach((li, index) => {
-            li.textContent = brr[index]; // 填充数字
-            li.onclick = () => {
-                img.src = arr[index];
-                p.textContent = brr[index];
-                lis.forEach(item => item.classList.remove('active'));
-                li.classList.add('active');
-            };
-        });
+      // 修改后的JS部分（保持原有随机逻辑）
+      const lis = document.querySelectorAll("li");
+      lis[r].classList.add("active"); // 高亮激活项
+
+      // 添加点击切换功能
+      //   lis.forEach((li, index) => {
+      //     li.textContent = brr[index]; // 填充数字
+      //     li.onclick = () => {
+      //       img.src = arr[index];
+      //       p.textContent = brr[index];
+      //       lis.forEach((item) => item.classList.remove("active"));
+      //       li.classList.add("active");
+      //     };
+      //   });
+      let i = r;
+      function fn() {
+        lis[i].classList.remove("active");
+        i = (i + 1) % 6;
+        img.src = arr[i];
+        lis[i].classList.add("active");
+        console.log(i);
+      }
+      let clear = setInterval(fn, 1000);
+      console.log(clear);
+      but.onclick = function () {
+        clearInterval(clear);
+      };
     </script>
-</body>
-
+  </body>
 </html>
