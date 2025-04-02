@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>随机问答</title>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f0f2f5;
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      div {
+        width: 320px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards;
+      }
+      div > p {
+        font-size: 1.2em;
+        color: #2c3e50;
+        margin: 0;
+        transition: color 0.3s;
+      }
+      div > p:hover {
+        color: #e74c3c;
+      }
+      button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        background: #3498db;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+      }
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(52, 152, 219, 0.3);
+        background: #2980b9;
+      }
+      button:active {
+        transform: scale(0.95);
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>问题是:什么是回调函数</p>
+      <button>开始</button>
+      <button>结束</button>
+    </div>
+    <script>
+      let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const div = document.querySelector("div");
+      const p = document.querySelector("p");
+      const but1 = document.querySelector("div button:nth-of-type(1)");
+      const but2 = document.querySelector("div button:nth-of-type(2)");
+      let r = 0,
+        ok = 0;
+      function question() {
+        r = Math.floor(Math.random() * 10);
+        console.log({ r });
+
+        p.innerHTML = arr[r];
+      }
+      function fn() {
+        const set = setInterval(question, 500);
+        ok = set;
+      }
+      function shot() {
+        clearInterval(ok);
+      }
+      but1.addEventListener("click", fn);
+      but2.addEventListener("click", shot);
+    </script>
+  </body>
+</html>
