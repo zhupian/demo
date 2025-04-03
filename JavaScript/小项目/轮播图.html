@@ -1,125 +1,175 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .slider-out {
-        width: auto;
-        height: 600px;
-        background-color: antiquewhite;
-      }
 
-      .slider-inner {
-        width: auto;
-        height: 100px;
-        background-color: aliceblue;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .slider-out {
+      width: auto;
+      height: 600px;
+      background-color: antiquewhite;
+    }
 
-      .active {
-        background: #2196f3 !important;
-        transform: scale(1.2);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      }
+    .slider-inner {
+      width: auto;
+      height: 100px;
+      background-color: aliceblue;
+    }
 
-      ul {
-        list-style: none;
-        /* 去除默认圆点 */
-        padding-left: 0;
-        /* 清除默认缩进 */
-        display: flex;
-        /* 启用弹性布局 */
-        gap: 15px;
-        /* 列表项间距 */
-        justify-content: center;
-        /* 水平居中 */
-      }
+    .active {
+      background: #2196f3 !important;
+      transform: scale(1.2);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-      ul li {
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
+    ul {
+      list-style: none;
+      /* 去除默认圆点 */
+      padding-left: 0;
+      /* 清除默认缩进 */
+      display: flex;
+      /* 启用弹性布局 */
+      gap: 15px;
+      /* 列表项间距 */
+      justify-content: center;
+      /* 水平居中 */
+    }
 
-      ul li:hover {
-        background: #4caf50;
-        /* 悬停背景色 */
-        color: white;
-      }
-    </style>
-  </head>
+    ul li {
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
 
-  <body>
-    <div class="slider">
-      <div class="slider-out">
-        <img />
-      </div>
-      <div class="slider-inner">
-        <p></p>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-        </ul>
-      </div>
+    ul li:hover {
+      background: #4caf50;
+      color: white;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+      margin: 20px auto;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .flex-left {
+      background-color: #FF5722;
+      color: white;
+    }
+
+    .flex-right {
+      background-color: #9C27B0;
+      color: white;
+    }
+
+    /* 交互效果 */
+    button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <div class="slider-out">
+      <img />
     </div>
-    <button>停止</button>
-    <script>
-      "use strict";
-      const arr = [
-        "https://haowallpaper.com/link/common/file/previewFileImg/15789130517090624",
-        "https://haowallpaper.com/link/common/file/previewFileImg/16445126326406528",
-        "https://haowallpaper.com/link/common/file/previewFileImg/16563395263319424",
-        "https://haowallpaper.com/link/common/file/previewFileImg/16535093223607680",
-        "https://haowallpaper.com/link/common/file/previewFileImg/15662353409020224",
-        "https://haowallpaper.com/link/common/file/previewFileImg/16625960047725952",
-      ];
-      const brr = ["1", "2", "3", "4", "5", "6"];
-      const slider = document.querySelector(".slider");
-      const sliderOut = document.querySelector(".slider-out");
-      const sliderInner = document.querySelector(".slider-inner");
-      const img = document.querySelector("img");
-      const p = document.querySelector("p");
-      const r = Math.floor(Math.random() * 6);
-      const but = document.querySelector("button");
-      img.src = arr[r];
+    <div class="slider-inner">
+      <p></p>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+      </ul>
+    </div>
+  </div>
+  <button>停止</button>
+  <div class="flex-container">
+    <button class="flex-left">左按钮</button>
+    <button class="flex-right">右按钮</button>
+  </div>
+  <script>
+    "use strict";
+    const arr = [
+      "https://haowallpaper.com/link/common/file/previewFileImg/15789130517090624",
+      "https://haowallpaper.com/link/common/file/previewFileImg/16445126326406528",
+      "https://haowallpaper.com/link/common/file/previewFileImg/16563395263319424",
+      "https://haowallpaper.com/link/common/file/previewFileImg/16535093223607680",
+      "https://haowallpaper.com/link/common/file/previewFileImg/15662353409020224",
+      "https://haowallpaper.com/link/common/file/previewFileImg/16625960047725952",
+    ];
+    const brr = ["1", "2", "3", "4", "5", "6"];
+    const slider = document.querySelector(".slider");
+    const sliderOut = document.querySelector(".slider-out");
+    const sliderInner = document.querySelector(".slider-inner");
+    const right = document.querySelector('.flex-right');
+    const left = document.querySelector('.flex-left');
+    const img = document.querySelector("img");
+    const p = document.querySelector("p");
+    const r = Math.floor(Math.random() * 6);
+    const but = document.querySelector("button");
+    img.src = arr[r];
+    const lis = document.querySelectorAll("li");
+    lis[r].classList.add("active"); // 高亮激活项
+    let clear = 0;
+    let i = r;
+    function fnRight() {
+      bei();
+      i = (i + 1) % 6;
+      fn();
+    }
+    function fnLeft() {
+      bei();
+      i = (i - 1 + 6) % 6;
+      fn();
+    }
+    function bei() {
+      lis[i].classList.remove("active");
+      clearInterval(clear);
+    }
+    function fn() {
+      img.src = arr[i];
+      lis[i].classList.add("active");
+    }
+    function timeOut() {
+      clearInterval(clear);
+    }
+    function timeBegin() {
+      clear = setInterval(fnRight, 1000);
+    }
+    but.onclick = function () {
+      clearInterval(clear);
+    };
+    left.addEventListener('click', fnLeft);
+    right.addEventListener('click', fnRight);
+    slider.addEventListener('mouseenter', timeOut);//暂停定时器
+    slider.addEventListener('mouseleave', timeBegin);//开启定时器
+  </script>
+</body>
 
-      // 修改后的JS部分（保持原有随机逻辑）
-      const lis = document.querySelectorAll("li");
-      lis[r].classList.add("active"); // 高亮激活项
-
-      // 添加点击切换功能
-      //   lis.forEach((li, index) => {
-      //     li.textContent = brr[index]; // 填充数字
-      //     li.onclick = () => {
-      //       img.src = arr[index];
-      //       p.textContent = brr[index];
-      //       lis.forEach((item) => item.classList.remove("active"));
-      //       li.classList.add("active");
-      //     };
-      //   });
-      let i = r;
-      function fn() {
-        lis[i].classList.remove("active");
-        i = (i + 1) % 6;
-        img.src = arr[i];
-        lis[i].classList.add("active");
-        console.log(i);
-      }
-      let clear = setInterval(fn, 1000);
-      console.log(clear);
-      but.onclick = function () {
-        clearInterval(clear);
-      };
-    </script>
-  </body>
 </html>
