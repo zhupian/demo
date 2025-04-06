@@ -54,6 +54,15 @@
     //Keydown 键盘按下触发  Keyup 键盘抬起触发
     //表单输入触发
     //input 用户输入事件
+    input.addEventListener('keydown', function () {
+      console.log("键盘按下");
+    })
+    input.addEventListener('keyup', function () {
+      console.log("键盘抬起");
+    })
+    input.addEventListener('input', function () {
+      console.log(input.value);
+    })
   </script>
 </body>
 
