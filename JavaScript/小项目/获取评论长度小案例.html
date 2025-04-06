@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 200px;
+            transition: all .3s;
+        }
+
+        input:focus {
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" placeholder="发送一条友善的评论">
+    <div></div>
+    <script>
+        const input = document.querySelector('input');
+        input.addEventListener('input', function () {
+            console.log(input.value.length);
+        })
+    </script>
+</body>
+
+</html>
