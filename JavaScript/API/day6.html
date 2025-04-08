@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+    <input type="text">
+    <button id="but">点我</button>
+    <script>
+        //事件对象 也是一个对象
+        //例如鼠标的点击事件中 事件对象就存了鼠标在哪个位置
+        //事件绑定的回调函数的第一个参数就是事件对象
+        //一般命名为event,ev,e
+        //元素.addEventListener('click',function(e){})
+        const input = document.querySelector('input');
+        input.addEventListener('keyup', function (e) {
+            //console.log(e);
+            //例如检测具体哪个键盘
+            console.log(e.key);
+        })
+
+        //环境对象 this 指的是函数内部特殊的变量this,代表着当前函数运行时的环境
+        //每个函数里面都有this环境对象
+        //弄清楚this的指向可以让代码更简洁  即谁调用谁就是this(粗略规则)
+        const but = document.querySelector('#but');
+        but.addEventListener('click', function () {
+            console.log(this);
+            this.style.color = "red";
+        })
+
+        //回调函数
+        //如果将函数A作为参数传递给函数B时,我们称函数A为回调函数
+        function fn() {
+            console.log("函数fn是回调函数");
+        }
+        const c = setInterval(fn, 1000);
+        clearInterval(c);
+
+        but.addEventListener('click', function () {
+            console.log("回调匿名函数");
+        })
+    </script>
+</body>
+
+</html>
