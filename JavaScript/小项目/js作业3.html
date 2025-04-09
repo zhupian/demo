@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>双文本框演示页面</title>
+    <style>
+        .contain {
+            margin: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            width: 300px;
+        }
+
+        input {
+            margin: 8px 0;
+            padding: 6px;
+            width: 90%;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <label for="input1">文本框1:</label>
+        <input type="text" id="input1" name="text1" placeholder="请输入内容">
+        <label for="input2">文本框2:</label>
+        <input type="text" id="input2" name="text2" placeholder="点击提交">
+        <button type="button">提交</button>
+    </div>
+    <script>
+        const input1 = document.querySelector('#input1');
+        const input2 = document.querySelector('#input2');
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            let ans = "";
+            const inputValue = input1.value;
+            for (let i = inputValue.length; i >= 0; i--) {
+                const c = inputValue[i];
+                if ((c >= 'a' && c <= 'z')) {
+                    ans += c.toUpperCase();
+                }
+                else if (c >= 'A' && c <= 'Z') {
+                    ans += c;
+                }
+            }
+            //console.log(ans);
+            input2.value = ans;
+        });
+    </script>
+</body>
+
+</html>
