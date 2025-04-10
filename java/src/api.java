@@ -341,9 +341,22 @@ public class api {
         // ……………………
 
         // ZoneDateTime 好多方法和之前差不多
-        // 1.获取当前时间对象
-        ZonedDateTime now = ZonedDateTime.now();
-        System.out.println(now);
+        // 懒得看了 到时候自己查文档吧
+
+        // 包装类 基本数据类型对应的引用数据类型( jdk5以后)
+        Integer xi = 10;
+        Integer xj = 10;
+        Integer xs = xi + xj;
+        System.out.println(xs);
+        // Integer成员方法
+        String Ins1 = Integer.toBinaryString(100);// 2进制
+        System.out.println(Ins1);
+        String Ins2 = Integer.toOctalString(100);// 8进制
+        System.out.println(Ins2);
+        String Ins3 = Integer.toHexString(100);// 16进制
+        System.out.println(Ins3);
+        int Ins4 = Integer.parseInt(Ins3);// String转int
+        System.out.println(Ins4);
     }
 
 }
