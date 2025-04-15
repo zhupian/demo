@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class collection {
     public static void main(String[] args) {
@@ -31,7 +32,24 @@ public class collection {
         Iterator<Integer> it = coll.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
+            // coll.remove(it.next());
+            // 在进行迭代器遍历的时候不可以用集合的方法进行增加或删除
+        }
+        for (Integer x : coll) { // coll.for 快速生成
+            System.out.println(x);
         }
 
+        // 匿名内部类写法
+        coll.forEach(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer k) {
+                System.out.println(k);
+            }
+        });
+
+        // lambda写法
+        coll.forEach((Integer f) -> {
+            System.out.println(f);
+        });
     }
 }
