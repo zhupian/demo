@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dad {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #body {
+            width: 200px;
+            height: 200px;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dad">
+        <div id="body">
+
+        </div>
+    </div>
+    <button>按钮</button>
+    <button>按钮2</button>
+    <script>
+        //解绑事件
+        //基本语法
+        const button = document.querySelector('button');
+        button.onclick = function () {
+            alert("点击");
+        }
+        button.onclick = null;
+
+        const button2 = document.querySelector('button:nth-child(2)');
+        function fn() {
+            alert('点击2');
+        }
+        button2.addEventListener('click', fn);
+        button2.removeEventListener('click', fn);
+        //注意 匿名函数无法解绑
+
+        //鼠标经过
+        const dad = document.querySelector('#dad');
+        const body = document.querySelector('#body');
+        //会冒泡
+        // dad.addEventListener('mouseover', function () {
+        //     console.log("鼠标经过");
+        // })
+        // dad.addEventListener('mouseout', function () {
+        //     console.log("鼠标离开");
+        // })
+
+        //不冒泡  建议用
+        dad.addEventListener('mouseenter', function () {
+            console.log("鼠标经过");
+        })
+        dad.addEventListener('mouseleave', function () {
+            console.log("鼠标离开");
+        })
+    </script>
+</body>
+
+</html>
