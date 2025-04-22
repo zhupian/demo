@@ -44,6 +44,5 @@ int main()
             l = mid + 1;
     }
     cout << l;
-
     return 0;
 }
