@@ -1,80 +1,73 @@
 #include <bits/stdc++.h>
-using i64 = long long;
-using u64 = unsigned long long;
-using u32 = unsigned;
-using i128 = __int128;
-using u128 = unsigned __int128;
-constexpr int inf = 2E9;
-void solve()
+using namespace std;
+const int N = 2e5 + 9;
+#define int long long
+#define endl '\n'
+void fn()
 {
     int n, m;
-    std::cin >> n >> m;
-    std::vector<int> a(n), b(m);
-    for (int i = 0; i < n; i++)
+    cin >> n >> m;
+    vector<int> arr(n + 1, 0), brr(m + 2, 0);
+    for (int i = 1; i <= n; i++)
+        cin >> arr[i];
+    for (int j = 1; j <= m; j++)
+        cin >> brr[j];
+    vector<int> pre(n + 1, 0), suf(n + 2, 0);
+    for (int i = 1, j = 1; i <= n; i++)
     {
-        std::cin >> a[i];
-    }
-    for (int i = 0; i < m; i++)
-    {
-        std::cin >> b[i];
-    }
-    std::vector<int> pre(m + 1, n + 1), suf(m + 1, -1);
-    pre[0] = 0;
-    for (int i = 0, j = 0; i < m; i++)
-    {
-        while (j < n && a[j] < b[i])
+        pre[i] = pre[i - 1];
+        if (arr[i] >= brr[j])
         {
-            j++;
+            pre[i] += 1;
+            j += 1;
         }
-        if (j == n)
+        if (j == m + 1)
         {
-            break;
-        }
-        pre[i + 1] = ++j;
-    }
-    suf[m] = n;
-    for (int i = m - 1, j = n - 1; i >= 0; i--)
-    {
-        while (j >= 0 && a[j] < b[i])
-        {
-            j--;
-        }
-        if (j < 0)
-        {
-            break;
-        }
-        suf[i] = j--;
-    }
-
-    if (pre[m] <= n)
-    {
-        std::cout << 0 << "\n";
-        return;
-    }
-    int ans = inf;
-    for (int i = 0; i < m; i++)
-    {
-        if (pre[i] <= suf[i + 1])
-        {
-            ans = std::min(ans, b[i]);
+            cout << 0 << endl;
+            return;
         }
     }
-    if (ans == inf)
+    for (int i = n, j = m; i >= 1; i--)
     {
-        ans = -1;
+        suf[i] = suf[i + 1];
+        if (arr[i] >= brr[j])
+        {
+            suf[i] += 1;
+            j -= 1;
+        }
     }
-    std::cout << ans << "\n";
+    int ans = INT_MAX;
+    for (int i = 0; i <= n + 1; i++)
+    {
+        if (i == 0 && suf[i + 1] == m - 1)
+        {
+            ans = min(ans, brr[1]);
+        }
+        else if (i == n + 1 && pre[i - 1] == m - 1)
+        {
+            ans = min(ans, brr[m]);
+        }
+        else
+        {
+            if (pre[i - 1] + suf[i] == m - 1)
+            {
+                ans = min(ans, brr[pre[i - 1] + 1]);
+            }
+        }
+    }
+    cout << (ans == INT_MAX ? -1 : ans) << endl;
+    return;
 }
-int main()
+signed main()
 {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
     int t;
-    std::cin >> t;
+    cin >> t;
     while (t--)
     {
-        solve();
+        fn();
     }
     return 0;
 }
