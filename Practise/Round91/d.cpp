@@ -14,10 +14,6 @@ void fn() {
 	}
 	sort(arr.begin() + 1, arr.end());
 	int ans = 0;
-	if (n == 1) {
-		cout << 1 << endl;
-		return;
-	}
 	for (int i = 1; i <= n; i++) {
 		int x = arr[i];
 		while (mp[x + 1]) {
@@ -30,6 +26,7 @@ void fn() {
 		}
 		else {
 			ans += 1;
+			mp[arr[i]] = 0;
 		}
 	}
 	cout << ans - 1  << endl;
