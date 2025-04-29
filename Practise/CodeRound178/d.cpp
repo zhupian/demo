@@ -1,26 +1,41 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N = 2e5 + 9;
+const int N = 4e6 + 9;
 #define int long long
 #define endl '\n'
+const int M = 1e7;
+vector<int> arr(N, 0), pre(N, 0);
+bool ok[M];
 void fn() {
 	int n; cin >> n;
-	vector<int> arr(n + 1, 0);
-	for (int i = 1; i <= n; i++) {
-		cin >> arr[i];
+	vector<int> an(n + 1, 0);
+	for (int i = 1; i <= n; i++) cin >> an[i];
+	sort(an.begin() + 1, an.end());
+	long long sum = 0;
+	int  ans = 0;
+	for (int i = n; i >= 1; i--) {
+		sum += an[i];
+		if (sum >= pre[n - i + 1]) ans = max(ans, n - i + 1);
 	}
-	if (n == 1) {
-		cout << 0 << endl;
-		return;
-	}
-
+	cout << n - ans << endl;
+	return;
 }
 signed main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
-	//int t=1;
+	for (int i = 2; i <= M; i++) {
+		if (!ok[i]) {
+			arr.push_back(i);
+			for (int j = 1LL * i * i; j <= M; j += i) {
+				ok[j] = true;
+			}
+		}
+	}
+	for (int i = 1; i <= N; i++) {
+		pre[i] = pre[i - 1] + arr[i - 1];
+	}
 	int t; cin >> t;
 	while (t--) {
 		fn();
