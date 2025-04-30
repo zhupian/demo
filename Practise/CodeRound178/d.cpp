@@ -1,11 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int N = 4e6 + 9;
-#define int long long
+const int N = 4e5 + 20;
 #define endl '\n'
 const int M = 1e7;
-vector<int> arr(N, 0), pre(N, 0);
-bool ok[M];
+bool ok[M + 1];//注意越界！！！
+vector<long long> arr, pre(N, 0);
 void fn() {
 	int n; cin >> n;
 	vector<int> an(n + 1, 0);
@@ -20,7 +19,7 @@ void fn() {
 	cout << n - ans << endl;
 	return;
 }
-signed main()
+int main()
 {
 	ios::sync_with_stdio(false);
 	cin.tie(0);
@@ -28,7 +27,7 @@ signed main()
 	for (int i = 2; i <= M; i++) {
 		if (!ok[i]) {
 			arr.push_back(i);
-			for (int j = 1LL * i * i; j <= M; j += i) {
+			for (long long j = 1LL * i * i; j <= M; j += i) {
 				ok[j] = true;
 			}
 		}
