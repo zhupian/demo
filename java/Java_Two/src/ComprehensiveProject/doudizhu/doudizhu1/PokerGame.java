@@ -19,7 +19,7 @@ public class PokerGame {
         // 初始化牌的大小,并添加牌
         for (int i = 0; i < color.length; i++) {
             for (int j = 0; j < number.length; j++) {
-                String t = number[j] + color[i];
+                String t =   color[i]+number[j];
                 list.add(t);
                 map.put(t, j * 10 + i);
             }
@@ -72,7 +72,7 @@ public class PokerGame {
     public void LookPoker(String name, ArrayList<String> list) {
         System.out.print(name + ": ");
         for (String poker : list) {
-            System.out.print(poker + "  ");
+            System.out.print(poker);
         }
         System.out.println();
     }
