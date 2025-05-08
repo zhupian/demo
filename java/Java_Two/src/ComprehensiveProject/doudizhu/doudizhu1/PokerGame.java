@@ -72,7 +72,7 @@ public class PokerGame {
     public void LookPoker(String name, ArrayList<String> list) {
         System.out.print(name + ": ");
         for (String poker : list) {
-            System.out.print(poker);
+            System.out.print(poker+" ");
         }
         System.out.println();
     }
