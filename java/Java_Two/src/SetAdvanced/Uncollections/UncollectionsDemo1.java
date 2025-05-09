@@ -15,17 +15,20 @@ public class UncollectionsDemo1 {
         }
         Map<Integer,Integer> map= Map.of(1,2,2,3,5,6,7,8);
         //Map.of最多传10个键值对
+
+        //三种获取map值的方法
         Set<Integer> keys=map.keySet();//获取键集合
+        Collection<Integer> values=map.values();//获取值集合
+        Set<Map.Entry<Integer,Integer>> entries=map.entrySet();//获取键和值集合
         for(int key:keys){
             int value=map.get(key);
             System.out.println(key+" "+value);
         }
-        Collection<Integer> values=map.values();//获取值集合
-        Set<Map.Entry<Integer,Integer>> entries=map.entrySet();//获取键和值集合
         for (Map.Entry<Integer, Integer> entire : map.entrySet()) {
             Integer key = entire.getKey();
             Integer value = entire.getValue();
             System.out.println(key+" "+value);
         }
+
     }
 }
