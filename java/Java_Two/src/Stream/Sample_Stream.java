@@ -1,4 +1,4 @@
-package Stream流;
+package Stream;
 
 import java.util.ArrayList;
 
