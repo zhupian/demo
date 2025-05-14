@@ -1,4 +1,4 @@
-package collections;
+package SetAdvanced.collections;
 
 import java.util.ArrayList;
 import java.util.Collections;
