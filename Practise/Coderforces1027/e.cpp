@@ -1,69 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll ;
-const ll mi = -1e18;
-void fn() {
+typedef long long ll;
+const int N = 2e5 + 5;
+vector<ll>a(N), mn(N), mx(N), g[N];
+
+void dfs(int u, int p) {
+	mn[u] = min(a[u] - mx[p], a[u]);
+	mx[u] = max(a[u] - mn[p], a[u]);
+
+	for (int v : g[u]) {
+		if (v == p)continue;
+		dfs(v, u);
+	}
+}
+
+void solve() {
 	int n;
 	cin >> n;
-	vector<long long > a(n + 1), p(n + 1, 0), t;
-	vector<bool> ok(n + 1, false);
-	queue<int> q;
-	vector<vector<int>> adj(n + 1);
-	for (int i = 1; i <= n; ++i) {
-		cin >> a[i];
-	}
-	for (int i = 1; i < n ; i++) {
+
+	for (int i = 1; i <= n; i++)g[i].clear();
+	for (int i = 1; i <= n; i++)cin >> a[i];
+
+	for (int i = 1; i < n; i++) {
 		int u, v;
 		cin >> u >> v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
+		g[u].push_back(v);
+		g[v].push_back(u);
 	}
 
-	q.push(1);
-	ok[1] = true;
-	while (!q.empty()) {
-		int u = q.front();
-		q.pop();
-		t.push_back(u);
-		for (int v : adj[u]) {
-			if (ok[v] == false) {
-				p[v] = u;
-				q.push(v);
-				ok[v] = true;
-			}
-		}
-	}
-	vector<long long > x(n + 1, 0), y(n + 1, 0);
-	for (int u : t) {
-		if (u == 1) {
-			x[u] = a[u];
-			y[u] = mi;
-		} else {
-			int pp = p[u];
-			x[u] = a[u];
-			if (y[pp] != mi) {
-				x[u] = max(1LL * a[u] - y[pp], x[u]);
-			}
-			y[u] = max(1LL * a[u] - a[pp], 1LL * a[u] - x[pp]);
-		}
-	}
-	vector<long long > ans(n + 1);
-	for (int i = 1; i <= n; ++i) {
-		ans[i] = max(x[i], y[i]);
-		cout << ans[i] << ' ';
-	}
-	cout << endl;
-	return;
+	mn[0] = mx[0] = 0;
+	dfs(1, 0);
+
+	for (int i = 1; i <= n; i++)cout << mx[i] << " ";
+	cout << "\n";
 }
+
 int main() {
-	ios_base::sync_with_stdio(false);
+	ios::sync_with_stdio(0);
 	cin.tie(0);
-	cout.tie(0);
 	int t;
 	cin >> t;
-	while (t--) {
-		fn();
-	}
-
-	return 0;
+	while (t--)solve();
 }
