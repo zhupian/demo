@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止默认行为</title>
+</head>
+
+<body>
+    <!-- 正常情况下点击注册会跳转 -->
+
+    <form action="https://www.bushux.cc/">
+        <input type="submit" value="注册">
+    </form>
+    <a href="https://www.baidu.com">百度</a>
+    <script>
+        //阻止提交
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function (e) {
+            //阻止默认行为,提交
+            e.preventDefault();
+        })
+
+        const a = document.querySelector('a');
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>事件委托</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    //事件委托就是利用事件流的特征解决一些开发需求的知识技巧
+    <ul>
+        <li>第1个孩子</li>
+        <li>第2个孩子</li>
+        <li>第3个孩子</li>
+        <li>第4个孩子</li>
+        <li>第5个孩子</li>
+        <p>第六个孩子</p>
+    </ul>
+    <script>
+        //点击每个li 当前li变成红色
+        //按照事件委托
+        const ul = document.querySelector('ul');
+        ul.addEventListener('click', function (e) {
+            //e.target就是点击的对象
+            console.log(e.target.tagName);
+            console.log(23);
+
+            if (e.target.tagName === 'LI')
+                e.target.style.color = 'red';
+        })
+    </script>
+</body>
+
+</html>
