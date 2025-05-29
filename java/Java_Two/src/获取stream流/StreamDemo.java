@@ -1,4 +1,4 @@
-package Stream;
+package 获取stream流;
 
 import java.util.ArrayList;
 import java.util.Collections;

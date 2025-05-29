@@ -1,4 +1,4 @@
-package Stream;
+package 获取stream流;
 
 import java.util.HashMap;
 
@@ -12,7 +12,9 @@ public class StreamDemo2 {
         hm.put(5,6);
         hm.put(7,8);
         hm.put(9,10);
-        //获取stream流
+        //1.获取stream流
         hm.keySet().stream().forEach(s-> System.out.println(s));
+        //2.获取stream流
+        hm.entrySet().stream().forEach(s-> System.out.println(s));
     }
 }
