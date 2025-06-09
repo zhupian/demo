@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>其他事件-页面滚动事件</title>
+    <style>
+        body {
+            margin-top: 300px;
+            height: 3000px;
+        }
+
+        div {
+            margin: 100px;
+            overflow: scroll;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+        文字文字文字文字文字文字文字文字文字
+    </div>
+    <script>
+        // 滚动条在滚动的时候触发的事件
+        //很多网页需要用户滚动页面到某一区域的时候做一些处理,例如返回顶部,固定导航栏
+        //scroll  可以监听真个页面的滚动
+        const div = document.querySelector('div');
+        //滚动条往下拉,页面往上走  往上走的长度就是scrollTop
+        // div.addEventListener("scroll", function () {
+        //     console.log(this.scrollTop);
+        // })
+
+        //赋值写法
+        //document.documentElement.scrollTop = 800;
+
+
+        window.addEventListener('scroll', function () {
+            //获取html写法
+            //document.documentElement
+            const x = document.documentElement.scrollTop
+            console.log(x);
+            if (x >= 100) {
+                div.style.display = 'block';
+            }
+            else {
+                div.style.display = 'none';
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
