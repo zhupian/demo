@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期对象</title>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //实例化  在代码中发现了new关键字时,一般将这个操作称为实例化
+
+        //得到当前时间
+        const date = new Date();
+        console.log(date);
+        const date1 = new Date('2023-5-7');
+        console.log(date1);
+
+        console.log(date.getHours());
+        const div = document.querySelector('div');
+        div.innerHTML = date.toDateString();
+
+
+
+
+    </script>
+</body>
+
+</html>

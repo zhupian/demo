@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面尺寸事件</title>
+    <style>
+        .div {
+            width: 200px;
+            height: 300px;
+            border: 20px;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //  resize 浏览器窗口大小发生变化的时候触发的事件
+        window.addEventListener('resize', function () {
+            console.log(1);
+        })
+        // 获取元素的可见部分宽和高(不包括margin border 滚动条)
+        //clientWidth clientHeight
+        const div = document.querySelector('div');
+        console.log(div.clientWidth);
+
+
+    </script>
+</body>
+
+</html>
