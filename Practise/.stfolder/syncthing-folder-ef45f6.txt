@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: wzffa-u5mtp
+created: 2025-06-16T20:52:01+08:00
