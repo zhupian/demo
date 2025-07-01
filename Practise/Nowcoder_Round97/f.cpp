@@ -28,7 +28,6 @@ void fn() {
 	bool ok = false;
 	for (int i = 1; i <= n; i++) {
 		if (arr[i] == brr[j]) {
-			ma = arr[i];
 			j += 1;
 			i += 1;
 			ans = (ans * max(1LL, sum)) % M;

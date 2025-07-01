@@ -1,9 +1,7 @@
-package Stream流的中间方法;
+package Stream;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class StreamDemo5 {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Stream流的终极方法;
+package Stream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,6 @@ public class StreamDemo8 {
         //forEach     遍历
         //count       统计
         //toArray()   收集流中的数据,放到数组中
-
 
         ArrayList<String> list=new ArrayList<>();
         Collections.addAll(list,"a","b","c","d","e","a","a");

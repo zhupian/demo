@@ -1,4 +1,4 @@
-package Stream流的中间方法;
+package Stream;
 
 import java.util.ArrayList;
 import java.util.Collections;

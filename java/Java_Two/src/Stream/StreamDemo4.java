@@ -1,4 +1,4 @@
-package 获取stream流;
+package Stream;
 
 import java.util.stream.Stream;
 
