@@ -12,15 +12,6 @@ void fn() {
 		cout << "Alice" << endl;
 		return;
 	}
-	int zero = 0;
-	for (int i = 0; i < n; i++) {
-		if (s[i] == '0') zero += 1;
-		else zero = 0;
-		if (zero >= k) {
-			cout << "Bob" << endl;
-			return;
-		}
-	}
 	if (2 * k <= n) {
 		cout << "Bob" << endl;
 		return;

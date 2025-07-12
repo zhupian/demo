@@ -1,47 +1,43 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-void solve() {
-	int n;
-	cin >> n;
-	vector<int> arr(n);
-	for (int i = 0; i < n; ++i) {
+const int N = 2e5 + 9;
+#define int long long
+#define endl '\n'
+void fn() {
+	int n; cin >> n;
+	vector<int> arr(n + 1, 0);
+	for (int i = 1; i <= n; i++) {
 		cin >> arr[i];
 	}
-	if (n == 1) {
-		cout << "1" << endl;
-		return;
-	}
-	vector<int> arrmin(n);
-	vector<int> arrmax(n);
-	arrmin[0] = arr[0];
-	for (int i = 1; i < n; ++i)
+	vector<int> arrmin(n + 2, 0);
+	vector<int> arrmax(n + 2, 0);
+	arrmin[1] = arr[1];
+	for (int i = 2; i <= n; i++) {
 		arrmin[i] = min(arrmin[i - 1], arr[i]);
-	arrmax[n - 1] = arr[n - 1];
-	for (int i = n - 2; i >= 0; i--)
+	}
+	arrmax[n] = arr[n];
+	for (int i = n - 1; i >= 1; i--) {
 		arrmax[i] = max(arrmax[i + 1], arr[i]);
+	}
 	string ans = "";
-	for (int i = 0; i < n; i++) {
-		int lef = (i == 0) ? INT_MAX : arrmin[i - 1];
-		int ri = (i == n - 1) ? INT_MIN : arrmax[i + 1];
-
-		if (arr[i] < lef || arr[i] > ri) {
-			ans += '1';
-		} else {
-			ans += '0';
-		}
+	ans += '1';
+	for (int i = 2; i < n; i++) {
+		if (arr[i] == arrmin[i]) ans += '1';
+		else if (arr[i] == arrmax[i]) ans += '1';
+		else ans += '0';
 	}
+	ans += '1';
 	cout << ans << endl;
+	return;
 }
-
-int main() {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-
-	int t = 1;
-	cin >> t;
+signed main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	int t; cin >> t;
 	while (t--) {
-		solve();
+		fn();
 	}
-
 	return 0;
 }
