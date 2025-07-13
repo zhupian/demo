@@ -28,15 +28,15 @@ signed main()
 		if (bp[arr[i]] == 2 && r == -1) r = i;
 	}
 	unordered_map<int, int> cp;
-	for (int i = r + 1; i <= r - 1; i++) {
+	for (int i = r; i <= r; i++) {
 		cp[arr[i]] += 1;
 		if (cp[arr[i]] == 1) {
-			ma = max(ma, i - l - 1);
+			ma = max(ma, i - l );
 		}
 		else {
-			ma = max(ma, r - i - 1);
+			ma = max(ma, r - i);
 		}
 	}
-	cout << ma + ans << endl;
+	cout << 2 * ma + ans << endl;
 	return 0;
 }
