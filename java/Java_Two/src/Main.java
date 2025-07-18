@@ -6,8 +6,6 @@ public class Main {
         int a = scanner.nextInt();
         int b = scanner.nextInt();
         scanner.close();
-
-        //write your code here......
         if(a<b){
             int x=a;
             a=b;
