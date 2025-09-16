@@ -14,11 +14,11 @@ import { type PersonInter } from '@/types';
 // defineProps(['a','b']) 只接收
 import { type Persons } from '@/types';
 //接收并且限制类型 
-defineProps<{ list: Persons }>()
+//defineProps<{ list: Persons }>()
 //要求收到的是list并且符合接口Persons
 
 //接受并且限制类型并且限制必要性
-defineProps<{ list?: Persons }>()
+//const props = defineProps<{ list?: Persons }>()
 //可传可不传
 let x = defineProps(['a', 'b', 'c', 'd', 'list']);//a,b进来必须"声明"
 console.log(x);
