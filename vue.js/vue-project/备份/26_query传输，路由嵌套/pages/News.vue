@@ -1,10 +1,25 @@
 <template>
+    <!-- 导航区 -->
     <div class="news-page">
         <h1>📰 新闻页面</h1>
-        <ul class="news-list">
-            <li v-for="n in 5" :key="n">新闻条目 {{ n }} - 今日热点速递</li>
+        <ul>
+            <li v-for="i in newList" :key="i.id">
+                <!-- 第一种传参数 -->
+                <!-- <RouterLink :to="`/News/details?id=${i.id}&time=${i.time}&thing=${i.thing}`">{{ i.thing }}</RouterLink> -->
+                <!-- 第二种传参数 -->
+                <RouterLink :to="{
+                    path: '/news/details',
+                    query: { id: i.id, time: i.time, thing: i.thing }
+                }">
+                    {{ i.thing }}
+                </RouterLink>
+            </li>
         </ul>
         <button>查看更多</button>
+    </div>
+    <!-- 展示区 -->
+    <div class="new-content">
+        <RouterView></RouterView>
     </div>
 </template>
 
@@ -56,4 +71,10 @@ button {
 
 <script setup lang="ts">
 // 新闻组件
+import { ref } from 'vue';
+const newList = ref([
+    { id: "abc01", time: "2005", thing: "kill" },
+    { id: "abc02", time: "2341", thing: "eat" },
+    { id: "abc03", time: "1998", thing: "run" }
+])
 </script>

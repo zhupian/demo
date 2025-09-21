@@ -7,26 +7,37 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/Home.vue";
 import News from "@/pages/News.vue";
 import About from "@/pages/About.vue";
-
+import details from "@/pages/details.vue"
 
 //创建路由器(制定路由的时候要想好路由的工作模式)
 const router = createRouter({
     history: createWebHistory(),//路由器的工作模式
     routes: [//一个一个的路由
         {
-            name: 'home',
+            name: 'userHome',
             path: '/home',
             component: Home
         },
         {
-            name: 'news',
+            name: 'userNews',
             path: '/news',
-            component: News
+            component: News,
+            children: [
+                {
+                    path: 'details',
+                    component: details
+                }
+            ]
+
         },
         {
-            name: 'about',
+            name: 'userAbout',
             path: '/about',
             component: About
+        },
+        {
+            path: '/',
+            redirect: '/home'
         },
     ]
 })
